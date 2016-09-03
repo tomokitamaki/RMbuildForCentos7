@@ -1,0 +1,19 @@
+FROM    docker.io/centos:latest
+
+MAINTAINER    tomokitamaki
+#RUN    yum -y swap fakesystemd systemd && yum clean all
+#RUN    yum install firewalld
+#RUN    firewall-cmd --zone=public --add-service=http --permanent
+#RUN    firewall-cmd --reload
+RUN    yum -y groupinstall "Development Tools"
+RUN    yum -y install sudo tar openssh openssh-clients openssh-server syslog httpd httpd-devel mysql-server vim python-setuptools openssl-devel readline-devel zlib-devel curl-devel libyaml-devel libffi-devel postgresql-server postgresql-devel httpd httpd-devel ImageMagick ImageMagick-devel ipa-pgothic-fonts
+RUN    cd /root && \
+        curl -O https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz && \
+        tar xvf ruby-2.2.3.tar.gz && \
+        cd ruby-2.2.3 && \
+        ./configure --disable-install-doc && \
+        make && \
+        make install
+RUN    cd /root && \
+        gem install bundler --no-rdoc --no-ri
+
