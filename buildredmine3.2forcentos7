@@ -78,5 +78,5 @@ sudo docker exec -it pre_redminebuild service httpd configtest
 sudo docker exec -it pre_redminebuild service httpd restart
 sudo docker stop pre_redminebuild
 sudo docker commit pre_redminebuild autobuild:redmine
-sudo docker run -d -p 2222:80 autobuild:redmine /bin/bash
+sudo docker run -d -p 2222:80 autobuild:redmine
 
